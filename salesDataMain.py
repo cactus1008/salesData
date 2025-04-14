@@ -1,4 +1,4 @@
-# Joaquin Elizalde
+# Joaquin Elizalde, Annie Jaynes, Becca Braatz, Blake Pead, Michael Jones
 
 import sqlalchemy
 import pandas as pd
@@ -63,7 +63,7 @@ if iChoice == '1':
     df.to_sql("sale", engine, if_exists = 'replace', index = False)
 
     print("You've imported the excel file into your postgres database")
-    print(df)
+
 elif iChoice == '2':
     print("The following are all the categories that have been sold:")
     # Connects to postgres and queries for categories
