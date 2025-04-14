@@ -1,5 +1,6 @@
-# Joaquin Elizalde
+# Joaquin Elizalde, Annie Jaynes, Becca Braatz, Blake Pead, Michael Jones
 # This program takes data from an excel file, cleans it up, and allows the user to look at summaries of data
+
 
 import sqlalchemy
 import pandas as pd
@@ -65,20 +66,21 @@ while bContinue == True:
         engine = sqlalchemy.create_engine(f'postgresql+psycopg2://{username}:{password}@{host}:{port}/{database}')
         df.to_sql("sale", engine, if_exists = 'replace', index = False)
 
-        print("You've imported the excel file into your postgres database")
-        print(df)
-    elif iChoice == '2':
-        print("The following are all the categories that have been sold:")
-        # Connects to postgres and queries for categories
-        engine = sqlalchemy.create_engine(f'postgresql+psycopg2://{username}:{password}@{host}:{port}/{database}')
-        sales = pd.read_sql_query('select distinct category from sale', engine)
-        iCatCount = 1
-        # Display categories
-        for category in sales['category'].values:
-            print(f'{iCatCount}: {category}')
-            iCatCount += 1
-        # Gets the requested category and links it to an option
-        sumNum = int(input('Please enter the number of the category you want to see summarized: '))
+
+    print("You've imported the excel file into your postgres database")
+
+elif iChoice == '2':
+    print("The following are all the categories that have been sold:")
+    # Connects to postgres and queries for categories
+    engine = sqlalchemy.create_engine(f'postgresql+psycopg2://{username}:{password}@{host}:{port}/{database}')
+    sales = pd.read_sql_query('select distinct category from sale', engine)
+    iCatCount = 1
+    # Display categories
+    for category in sales['category'].values:
+        print(f'{iCatCount}: {category}')
+        iCatCount += 1
+    # Gets the requested category and links it to an option
+    sumNum = int(input('PLease enter the number of the category you want to see summarized: '))
 
         requestedCategory = sales.iloc[sumNum - 1, 0]
         # Query for specific data
