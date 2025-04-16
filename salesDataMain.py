@@ -31,10 +31,10 @@ productCategoriesDict = {
 
 # Info for postgres
 username = 'postgres'
-password = '12345'
+password = 'j4n11e02'
 host = 'localhost'
-port = '5432'
-database = 'IS303'
+port = '5433'
+database = 'is303'
 
 # Engine and connection for postgres
 engine = sqlalchemy.create_engine(f'postgresql+psycopg2://{username}:{password}@{host}:{port}/{database}')
