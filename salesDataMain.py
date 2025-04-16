@@ -30,11 +30,13 @@ productCategoriesDict = {
         'Charger': 'Technology'}
 
 # Info for postgres
+# FOR TA: This is the data for one of our databases but you'll want to change it
+# (You probably already know that though)
 username = 'postgres'
-password = '12345'
+password = 'j4n11e02'
 host = 'localhost'
-port = '5432'
-database = 'IS303'
+port = '5433'
+database = 'is303'
 
 # Engine and connection for postgres
 engine = sqlalchemy.create_engine(f'postgresql+psycopg2://{username}:{password}@{host}:{port}/{database}')
@@ -91,7 +93,7 @@ while iChoice in ["1", "2"]:
 
         # Query for specific data
         query = '''
-            SELECT product, total_price, quantity_sold FROM public.sales
+            SELECT product, total_price, quantity_sold FROM public.sale
             WHERE category = :category
             '''
 
@@ -115,5 +117,8 @@ while iChoice in ["1", "2"]:
         # Shows chart on screen
         plot.show()
 
+    # Closes the program if they select anything other than 1 or 2
+    else:
+        print("\nClosing the program.")
 # Closes the connection to postgres
 conn.close()
